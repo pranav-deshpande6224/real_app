@@ -30,42 +30,50 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final GlobalKey<FormState> _formKey = GlobalKey();
 
-  void _incrementCounter() {
-    setState(() {
-      _counter = _counter + 2;
-    });
+  Widget _buildName() {
+    return TextFormField(
+      decoration:
+          const InputDecoration(icon: Icon(Icons.mail), hintText: "Name"),
+    );
+  }
+
+  Widget _buildEmail() {
+    return TextFormField();
+  }
+
+  Widget _buildPassword() {
+    return TextFormField();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        body: SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 50,
+              ),
+              _buildName(),
+              const SizedBox(
+                height: 30,
+              ),
+              _buildEmail(),
+              const SizedBox(
+                height: 30,
+              ),
+              _buildPassword()
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+    ));
   }
 }
