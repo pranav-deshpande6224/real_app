@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Cloning',
+      title: 'Cloning Youtube Application',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.green,
       ),
       home: const MyHomePage(title: "Flutter App"),
     );
