@@ -16,8 +16,52 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: "Flutter App"),
+      home: const SecondHomePage(),
     );
+  }
+}
+
+class SecondHomePage extends StatefulWidget {
+  const SecondHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<SecondHomePage> createState() => _SecondHomePageState();
+}
+
+class _SecondHomePageState extends State<SecondHomePage> {
+  int? counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.grey[200],
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.grey,
+          title: const Text(
+            "My Flutter App",
+            style: TextStyle(color: Colors.purple),
+          ),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text("Pessed the button those many times"),
+              Text("{$counter}")
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () {
+            setState(() {
+              counter = counter! + 1;
+            });
+          },
+        ));
   }
 }
 
